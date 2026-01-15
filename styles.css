@@ -1,0 +1,185 @@
+/* --- VARIABLES & RESET --- */
+:root {
+    /* Base Colors */
+    --bg-white: #ffffff;
+    --bg-off-white: #f8f9fa;
+    --text-main: #222222;       
+    --text-muted: #555555;      
+    
+    /* YOUR ACCENTS */
+    --accent-green: #BDF8A3;    /* Mint */
+    --accent-yellow: #FCFC81;   /* Lemon */
+    
+    /* Button Text Color (Black is best for these light accents) */
+    --btn-text: #000000;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: var(--text-main);
+    background-color: var(--bg-white);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+.container {
+    max-width: 1100px; 
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* --- HEADER --- */
+header {
+    padding: 20px 0;
+    background-color: var(--bg-white);
+    /* Sticky header ensures nav is always accessible */
+    position: sticky; 
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-img {
+    height: 55px; /* Adjust if logo looks too big/small */
+    width: auto;
+}
+
+nav ul { display: flex; gap: 35px; }
+
+nav a {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+
+/* Active/Hover state uses the Mint Green underline */
+nav a:hover, nav a.active {
+    color: var(--text-main);
+    border-bottom: 3px solid var(--accent-green);
+}
+
+/* --- MAIN CONTENT AREAS --- */
+main { flex: 1; padding: 60px 0; }
+
+h1 {
+    font-size: 2.8rem;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    color: var(--text-main);
+    letter-spacing: -1px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    color: var(--text-main);
+}
+
+p { margin-bottom: 20px; color: var(--text-muted); font-size: 1.05rem; }
+
+/* --- HERO SECTION (Home Page) --- */
+.hero-split {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+.hero-text { flex: 1; }
+.hero-image { flex: 1; display: flex; justify-content: center; }
+
+/* The Lemon Highlighter Effect */
+.highlight {
+    background: linear-gradient(180deg, rgba(255,255,255,0) 60%, var(--accent-yellow) 60%);
+    display: inline;
+}
+
+/* --- COMPONENTS --- */
+.btn {
+    display: inline-block;
+    background-color: var(--accent-green);
+    color: var(--btn-text);
+    padding: 14px 40px;
+    border-radius: 4px;
+    font-weight: 700;
+    margin-top: 10px;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.05); /* Subtle depth */
+}
+.btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 6px 6px 0px rgba(0,0,0,0.05);
+}
+
+/* Bullet Lists with Mint Accent */
+.feature-list {
+    margin-bottom: 30px;
+    padding-left: 20px;
+    border-left: 4px solid var(--accent-green);
+}
+.feature-list li { margin-bottom: 12px; color: var(--text-main); font-weight: 500;}
+
+/* Collaboration Box */
+.collab-note {
+    font-style: italic;
+    color: var(--text-muted);
+    background-color: var(--bg-off-white);
+    padding: 20px;
+    border-radius: 4px;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    border-left: 4px solid var(--accent-yellow); /* Lemon border */
+}
+
+/* --- FORMS --- */
+.contact-form { max-width: 600px; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem;}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-green); /* Focus color */
+}
+.form-group textarea { height: 150px; resize: vertical; }
+
+/* --- FOOTER --- */
+footer {
+    background-color: var(--bg-off-white);
+    padding: 50px 0;
+    margin-top: 80px;
+    border-top: 1px solid #eee;
+    font-size: 0.85rem;
+    color: #888;
+    text-align: center;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hero-split { flex-direction: column-reverse; gap: 30px; }
+    .nav-container { flex-direction: column; gap: 20px; }
+    h1 { font-size: 2.2rem; }
+}
