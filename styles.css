@@ -207,3 +207,38 @@ footer {
         url('hero-bg.png');
     }
 }
+
+    /* --- SPLIT CONTENT LAYOUTS (For About & Services) --- */
+.content-split {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 80px; /* Space between sections */
+}
+
+/* Adds a nice shadow and curve to images */
+.content-split img {
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+    flex: 1;
+    max-width: 500px; /* Keeps images from getting huge */
+    object-fit: cover;
+}
+
+.split-text {
+    flex: 1;
+}
+
+/* Use this class to flip the order (Image Left, Text Right) */
+.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Mobile Responsive adjustment */
+@media (max-width: 768px) {
+    .content-split, .content-split.reverse {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .content-split img { width: 100%; max-width: 100%; }
+}
