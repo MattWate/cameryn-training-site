@@ -2,18 +2,18 @@
 
 /* --- VARIABLES & RESET --- */
 :root {
-    [cite_start]/* Base Colors [cite: 10] */
-    --bg-white: #ffffff;
-    --bg-off-white: #f8f9fa;
-    --text-main: #222222;       
-    --text-muted: #555555;      
+    /* Base Colors */
+    bg-white: #ffffff;
+    bg-off-white: #f8f9fa;
+    text-main: #222222;       
+    text-muted: #555555;      
     
     /* YOUR ACCENTS */
-    --accent-green: #BDF8A3;    /* Mint */
-    --accent-yellow: #FCFC81;   /* Lemon */
+    accent-green: #BDF8A3;    /* Mint */
+    accent-yellow: #FCFC81;   /* Lemon */
     
     /* Button Text Color */
-    --btn-text: #000000;
+    btn-text: #000000;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
