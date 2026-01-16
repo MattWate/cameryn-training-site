@@ -42,11 +42,18 @@ img { max-width: 100%; display: block; }
 /* --- HEADER --- */
 header {
     padding: 20px 0;
-    background-color: var(--bg-white);
+    /* CHANGED: Used your Mint Green so it stands out */
+    background-color: var(--accent-green); 
+    
     position: sticky; 
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid #f0f0f0;
+    
+    /* CHANGED: Added a darker green border for definition */
+    border-bottom: 1px solid #aae892; 
+    
+    /* CHANGED: Added a drop shadow so it clearly sits 'on top' of images */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
 }
 
 .nav-container {
