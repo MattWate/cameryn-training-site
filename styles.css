@@ -2,18 +2,18 @@
 
 /* --- VARIABLES & RESET --- */
 :root {
-    /* Base Colors */
-    bg-white: #ffffff;
-    bg-off-white: #f8f9fa;
-    text-main: #222222;       
-    text-muted: #555555;      
+    [cite_start]/* Base Colors [cite: 10] */
+    --bg-white: #ffffff;
+    --bg-off-white: #f8f9fa;
+    --text-main: #222222;       
+    --text-muted: #555555;      
     
     /* YOUR ACCENTS */
-    accent-green: #BDF8A3;    /* Mint */
-    accent-yellow: #FCFC81;   /* Lemon */
+    --accent-green: #BDF8A3;    /* Mint */
+    --accent-yellow: #FCFC81;   /* Lemon */
     
     /* Button Text Color */
-    btn-text: #000000;
+    --btn-text: #000000;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,21 +39,18 @@ img { max-width: 100%; display: block; }
     width: 100%;
 }
 
-/* --- HEADER --- */
+/* --- HEADER (Updated) --- */
 header {
     padding: 20px 0;
-    /* CHANGED: Used your Mint Green so it stands out */
-    background-color: var(--accent-green); 
+    background-color: #ffffff; /* FIXED: White background hides logo box */
     
     position: sticky; 
     top: 0;
     z-index: 100;
     
-    /* CHANGED: Added a darker green border for definition */
-    border-bottom: 1px solid #aae892; 
-    
-    /* CHANGED: Added a drop shadow so it clearly sits 'on top' of images */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+    /* FIXED: Thicker Green border to separate header from content */
+    border-bottom: 3px solid var(--accent-green); 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
 }
 
 .nav-container {
@@ -86,13 +83,12 @@ nav a:hover, nav a.active {
 /* --- HERO SECTION (Full Width Overlay) --- */
 .hero-full {
     position: relative;
-    /* The magic trick: Gradient overlay on top of the image */
     background-image: 
         linear-gradient(
             to right, 
-            rgba(250, 250, 250, 0.65) 0%,   /* Almost solid white/grey on left */
-            rgba(250, 250, 250, 0.50) 40%,  /* Slight fade starts */
-            rgba(250, 250, 250, 0.20) 100%  /* Transparent on right to see explosion */
+            rgba(250, 250, 250, 0.60) 0%,   /* Solid on left for text readability */
+            rgba(250, 250, 250, 0.35) 40%,  
+            rgba(250, 250, 250, 0.10) 100%  /* Transparent on right */
         ),
         url('hero-bg.png');
     
@@ -100,14 +96,13 @@ nav a:hover, nav a.active {
     background-position: center;
     background-repeat: no-repeat;
     
-    /* Ensures the image covers the screen height comfortably */
     min-height: 85vh; 
     display: flex;
-    align-items: center; /* Vertically center the content */
+    align-items: center; 
 }
 
 .hero-content {
-    max-width: 700px; /* Constrain text width for readability */
+    max-width: 700px; 
     padding: 40px 0;
 }
 
@@ -170,7 +165,31 @@ p { margin-bottom: 20px; color: var(--text-muted); font-size: 1.1rem; }
     margin-top: 40px;
     font-size: 0.95rem;
     border-left: 5px solid var(--accent-yellow);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05); /* Soft shadow to lift off bg */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+/* --- SPLIT CONTENT LAYOUTS (For About & Services) --- */
+.content-split {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 80px; 
+}
+
+.content-split img {
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+    flex: 1;
+    max-width: 500px; 
+    object-fit: cover;
+}
+
+.split-text {
+    flex: 1;
+}
+
+.reverse {
+    flex-direction: row-reverse;
 }
 
 /* --- FORMS --- */
@@ -207,42 +226,15 @@ footer {
     .nav-container { flex-direction: column; gap: 20px; }
     h1 { font-size: 2.2rem; }
     .hero-full { min-height: auto; padding: 60px 0; }
-    /* Increase opacity on mobile so text is definitely readable over image */
+    
+    /* FIXED: Adjusted mobile gradient so image is visible (0.75 opacity) */
     .hero-full {
         background-image: 
-        linear-gradient(to right, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.95) 100%),
+        linear-gradient(to bottom, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.60) 100%),
         url('hero-bg.png');
+        background-position: center bottom;
     }
-}
 
-    /* --- SPLIT CONTENT LAYOUTS (For About & Services) --- */
-.content-split {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    margin-bottom: 80px; /* Space between sections */
-}
-
-/* Adds a nice shadow and curve to images */
-.content-split img {
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
-    flex: 1;
-    max-width: 500px; /* Keeps images from getting huge */
-    object-fit: cover;
-}
-
-.split-text {
-    flex: 1;
-}
-
-/* Use this class to flip the order (Image Left, Text Right) */
-.reverse {
-    flex-direction: row-reverse;
-}
-
-/* Mobile Responsive adjustment */
-@media (max-width: 768px) {
     .content-split, .content-split.reverse {
         flex-direction: column;
         gap: 30px;
